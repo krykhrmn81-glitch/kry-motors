@@ -15,6 +15,17 @@ async function getAllVehicles() {
   });
 }
 
+type Vehicle = {
+  id: string;
+  slug: string | null;
+  images: string | null;
+  brand: string;
+  model: string;
+  year: number;
+  price: number | null;
+};
+
+
 export default async function HomePage() {
   const featured = await getFeatured();
   const allVehicles = await getAllVehicles();
@@ -29,7 +40,7 @@ export default async function HomePage() {
           <div className="max-w-7xl mx-auto px-4">
             <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">Öne Çıkanlar</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-              {featured.map((vehicle) => (
+              {featured.map((vehicle: Vehicle) => (
                 <Link key={vehicle.id} href={`/vehicles/${vehicle.slug}`}>
                   <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition duration-300">
                     {getFirstImage(vehicle.images) ? (

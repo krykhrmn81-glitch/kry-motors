@@ -108,7 +108,6 @@ export default function NewVehiclePage() {
                 alert("Yükleme tamamlandı!");
               }}
               onUploadError={(error) => alert(`Hata: ${error.message}`)}
-              multiple
               appearance={{
                 button: 'bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg',
                 allowedContent: 'text-gray-600 text-sm',
@@ -118,6 +117,7 @@ export default function NewVehiclePage() {
                 allowedContent: 'JPG, PNG (maks. 4MB)',
               }}
             />
+
 
 
 

@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ekstra stil istersen buraya ekle */
+html {
+  scroll-behavior: smooth;
+}

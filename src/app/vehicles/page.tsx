@@ -1,11 +1,12 @@
 import prisma from "@/lib/prisma";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
+import { Vehicle } from "@/types/vehicle";
 
 export const dynamic = "force-dynamic";
 
 export default async function VehiclesPage() {
-  const vehicles = await prisma.vehicle.findMany({
+  const vehicles: Vehicle[] = await prisma.vehicle.findMany({
     orderBy: { createdAt: "desc" },
   });
 
@@ -37,7 +38,9 @@ export default async function VehiclesPage() {
                     <p className="text-2xl font-bold text-blue-600 mt-4">
                       {vehicle.price ? `${vehicle.price.toLocaleString()} TL` : "Fiyat Sorunuz"}
                     </p>
-                    <p className="text-gray-600 mt-2">{vehicle.mileage ? `${vehicle.mileage.toLocaleString()} km` : ""}</p>
+                    <p className="text-gray-600 mt-2">
+                      {vehicle.mileage ? `${vehicle.mileage.toLocaleString()} km` : ""}
+                    </p>
                   </div>
                 </Card>
               </Link>

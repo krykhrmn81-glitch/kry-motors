@@ -27,8 +27,9 @@ type Vehicle = {
 
 
 export default async function HomePage() {
-  const featured = await getFeatured();
-  const allVehicles = await getAllVehicles();
+  const featured: Vehicle[] = await getFeatured();
+  const allVehicles: Vehicle[] = await getAllVehicles();
+  
 
   const getFirstImage = (images: string | null) => images?.split(',')[0]?.trim() || null;
 

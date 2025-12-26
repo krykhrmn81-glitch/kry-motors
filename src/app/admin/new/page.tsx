@@ -100,14 +100,15 @@ export default function NewVehiclePage() {
           {/* ÇOKLU FOTOĞRAF YÜKLEME */}
           <div className="space-y-4">
             <p className="font-semibold">Fotoğraflar (birden fazla seçebilirsin)</p>
-            <UploadButton<OurFileRouter>
+            <UploadButton<OurFileRouter, "vehicleImages">
               endpoint="vehicleImages"
               onClientUploadComplete={(res) => {
-                const newUrls = res.map((file) => file.url);
+                const newUrls = res.map((f) => f.url);
                 setImages((prev) => [...prev, ...newUrls]);
-                alert('Yükleme tamamlandı!');
+                alert("Yükleme tamamlandı!");
               }}
-              onUploadError={(error: Error) => alert(`Hata: ${error.message}`)}
+              onUploadError={(error) => alert(`Hata: ${error.message}`)}
+              multiple
               appearance={{
                 button: 'bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg',
                 allowedContent: 'text-gray-600 text-sm',
@@ -116,8 +117,8 @@ export default function NewVehiclePage() {
                 button: 'Fotoğrafları Yükle (Birden Fazla Seçebilirsin)',
                 allowedContent: 'JPG, PNG (maks. 4MB)',
               }}
-              multiple
             />
+
 
 
             {/* Yüklenen resimleri göster */}

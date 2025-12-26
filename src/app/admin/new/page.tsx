@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { UploadButton } from "@uploadthing/react";
+import type { OurFileRouter } from "@/app/api/uploadthing/route";
+
 
 import { useEffect } from 'react';
 
@@ -98,17 +100,14 @@ export default function NewVehiclePage() {
           {/* ÇOKLU FOTOĞRAF YÜKLEME */}
           <div className="space-y-4">
             <p className="font-semibold">Fotoğraflar (birden fazla seçebilirsin)</p>
-            <UploadButton
-              endpoint="vehicleImages" // uploadthing'deki endpoint adı
+            <UploadButton<OurFileRouter>
+              endpoint="vehicleImages"
               onClientUploadComplete={(res) => {
-                // res'den URL'leri al ve state'e ekle
                 const newUrls = res.map((file) => file.url);
                 setImages((prev) => [...prev, ...newUrls]);
                 alert('Yükleme tamamlandı!');
               }}
-              onUploadError={(error: Error) => {
-                alert(`Hata: ${error.message}`);
-              }}
+              onUploadError={(error: Error) => alert(`Hata: ${error.message}`)}
               appearance={{
                 button: 'bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg',
                 allowedContent: 'text-gray-600 text-sm',
@@ -117,8 +116,9 @@ export default function NewVehiclePage() {
                 button: 'Fotoğrafları Yükle (Birden Fazla Seçebilirsin)',
                 allowedContent: 'JPG, PNG (maks. 4MB)',
               }}
-              multiple // <-- EN ÖNEMLİ KISIM: birden fazla dosya seçmeye izin veriyor
+              multiple
             />
+
 
             {/* Yüklenen resimleri göster */}
             {images.length > 0 && (

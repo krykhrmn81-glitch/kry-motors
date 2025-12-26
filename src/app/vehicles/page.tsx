@@ -24,13 +24,14 @@ export default async function VehiclesPage() {
                 <Card className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer">
                   {vehicle.images ? (
                     <img
-                      src={vehicle.images[0]}
+                      src={vehicle.images.split(",")[0]}
                       alt={`${vehicle.brand} ${vehicle.model}`}
                       className="w-full h-64 object-cover"
                     />
                   ) : (
                     <div className="bg-gray-200 border-2 border-dashed w-full h-64" />
                   )}
+
 
                   <div className="p-6">
                     <h3 className="font-bold text-xl">

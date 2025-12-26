@@ -1,8 +1,19 @@
-export type Vehicle = {
-  id: string;                 // UUID → string
-  name: string;
-  price: number;
+export interface Vehicle {
+  id: string;
+  type: "CAR" | "MOTORCYCLE";
+  brand: string;
+  model: string;
+  year: number;
+  price?: number | null;
+  mileage?: number | null;
+  fuelType?: string | null;
+  transmission?: string | null;
+  color?: string | null;
+  images: string;                 // <-- STRING, DİZİ DEĞİL
+  featured: boolean;
   slug: string;
-  images: string[];
-  type: "car" | "motorcycle"; // sen belirledin
-};
+  description?: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+  isFeatured: boolean;
+}

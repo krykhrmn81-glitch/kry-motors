@@ -8,7 +8,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const res = await fetch(`/api/vehicles?slug=${slug}`, {  // ← localhost kaldırıldı
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://kry-motors.onrender.com';
+  const res = await fetch(`${baseUrl}/api/vehicles?slug=${slug}`, {
     cache: 'no-store',
   });
 
@@ -16,6 +17,8 @@ export async function generateMetadata({
 
   const data = await res.json();
   const vehicle = data.vehicle;
+
+  // ... kalan kod aynı
 
   if (!vehicle) return { title: 'Araç Bulunamadı' };
 
@@ -31,7 +34,8 @@ export async function generateMetadata({
 }
 
 async function getVehicle(slug: string) {
-  const res = await fetch(`/api/vehicles?slug=${slug}`, {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://kry-motors.onrender.com';
+  const res = await fetch(`${baseUrl}/api/vehicles?slug=${slug}`, {
     cache: 'no-store',
   });
 

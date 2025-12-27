@@ -28,7 +28,7 @@ export async function generateMetadata({
 
 
 async function getVehicle(slug: string) {
-  const res = await fetch(`http://localhost:3000/api/vehicles?slug=${slug}`, {
+  const res = await fetch(`/api/vehicles?slug=${slug}`, {
     cache: 'no-store',
   });
 

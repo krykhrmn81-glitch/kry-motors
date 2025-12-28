@@ -81,12 +81,12 @@ export default function NewVehiclePage() {
           <div className="flex items-center space-x-3">
             <input
               type="checkbox"
-              name="isFeatured"
+              name="isFeatured"  // bu name tam olarak yukarıdaki formData.get ile eşleşmeli
               id="isFeatured"
               className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500"
             />
             <label htmlFor="isFeatured" className="text-lg font-medium">
-              Öne Çıkanlara Ekle (Ana sayfada üstte görünsün)
+              ⭐ Öne Çıkanlara Ekle
             </label>
           </div>
 

@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
       color: body.color?.trim() || null,
       description: body.description?.trim() || null,
       images: body.images?.trim() === '' ? null : body.images?.trim(),
-      // POST içinde, data objesinin içinde:
+      isFeatured: body.isFeatured || false,
       slug: `${body.brand?.toLowerCase().replace(/\s+/g, '-')}-${body.model?.toLowerCase().replace(/\s+/g, '-')}-${body.year}-${Math.floor(1000 + Math.random() * 9000)}`,    };
 
     // Zorunlu alan kontrolü

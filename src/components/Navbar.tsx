@@ -32,13 +32,13 @@ export default function Navbar() {
             Ana Sayfa
           </Link>
           <Link 
-            href="/arabalar" 
+            href="/cars" 
             className={`hover:text-yellow-400 transition ${pathname.startsWith('/arabalar') ? 'text-yellow-400 border-b-2 border-yellow-400 pb-1' : ''}`}
           >
             Arabalar
           </Link>
           <Link 
-            href="/motosikletler" 
+            href="/motorcycles" 
             className={`hover:text-yellow-400 transition ${pathname.startsWith('/motosikletler') ? 'text-yellow-400 border-b-2 border-yellow-400 pb-1' : ''}`}
           >
             Motosikletler
@@ -82,14 +82,14 @@ export default function Navbar() {
             Ana Sayfa
           </Link>
           <Link 
-            href="/arabalar" 
+            href="/cars" 
             className="block hover:text-yellow-400"
             onClick={() => setMobileOpen(false)}
           >
             Arabalar
           </Link>
           <Link 
-            href="/motosikletler" 
+            href="/motorcycles" 
             className="block hover:text-yellow-400"
             onClick={() => setMobileOpen(false)}
           >

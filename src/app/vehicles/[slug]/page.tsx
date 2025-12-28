@@ -1,6 +1,10 @@
 import { notFound } from 'next/navigation';
 import VehicleGallery from '@/components/VehicleGallery';
+import { prisma } from '@/lib/prisma';  // ← EKLE
 import { Metadata } from 'next';
+
+// Bu satırı ekle – her seferinde taze veri çeksin
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({
   params,
@@ -8,17 +12,10 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://kry-motors.onrender.com';
-  const res = await fetch(`${baseUrl}/api/vehicles?slug=${slug}`, {
-    cache: 'no-store',
+
+  const vehicle = await prisma.vehicle.findUnique({
+    where: { slug },
   });
-
-  if (!res.ok) return { title: 'Araç Bulunamadı' };
-
-  const data = await res.json();
-  const vehicle = data.vehicle;
-
-  // ... kalan kod aynı
 
   if (!vehicle) return { title: 'Araç Bulunamadı' };
 
@@ -33,24 +30,17 @@ export async function generateMetadata({
   };
 }
 
-async function getVehicle(slug: string) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://kry-motors.onrender.com';
-  const res = await fetch(`${baseUrl}/api/vehicles?slug=${slug}`, {
-    cache: 'no-store',
-  });
-
-  if (!res.ok) return null;
-  const data = await res.json();
-  return data.vehicle || null;
-}
-
 export default async function VehicleDetailPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const vehicle = await getVehicle(slug);
+
+  // DOĞRUDAN PRISMA KULLAN
+  const vehicle = await prisma.vehicle.findUnique({
+    where: { slug },
+  });
 
   if (!vehicle) {
     notFound();

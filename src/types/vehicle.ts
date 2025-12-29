@@ -10,7 +10,6 @@ export interface Vehicle {
   transmission?: string | null;
   color?: string | null;
   images: string;                 // <-- STRING, DİZİ DEĞİL
-  featured: boolean;
   slug: string;
   description?: string | null;
   createdAt: Date;

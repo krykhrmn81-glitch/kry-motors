@@ -6,7 +6,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Statik sayfalar
   const staticPages = [
-    { url: `${baseUrl}/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 1 },
+    {
+      url: `${baseUrl}/`,
+      lastModified: new Date(),
+      priority: 1,
+    },
     // diğer statik sayfalar...
   ];
 

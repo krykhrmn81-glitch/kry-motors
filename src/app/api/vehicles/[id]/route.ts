@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
+
 // DELETE - zaten güzel çalışıyor, sadece küçük temizlik
 export async function DELETE(
   request: NextRequest,
@@ -46,6 +47,9 @@ export async function PUT(
 
     // Gelen veriyi temizle ve güvenli hale getir
     const data = {
+      ownerName: body.ownerName?.trim(),
+      city: body.city?.trim(),
+      ownerPhone: body.ownerPhone?.trim(),
       brand: body.brand?.trim(),
       model: body.model?.trim(),
       year: Number(body.year),
@@ -62,7 +66,16 @@ export async function PUT(
     };
 
     // Zorunlu alan kontrolü (isteğe bağlı ama iyi olur)
-    if (!data.brand || !data.model || !data.year || !data.type) {
+    if (
+      !data.brand ||
+      !data.model ||
+      !data.year ||
+      !data.type ||
+      !data.ownerName ||
+      !data.city ||
+      !data.ownerPhone ||
+      !data.images
+    ) {
       return NextResponse.json({ error: 'Zorunlu alanlar eksik' }, { status: 400 });
     }
 

@@ -1,8 +1,13 @@
-import { defineConfig } from "@prisma/config";
+import 'dotenv/config'; // .env dosyasını yükler
+
+import { defineConfig, env } from 'prisma/config';
 
 export default defineConfig({
-  schema: "prisma/schema.prisma",
+  schema: 'prisma/schema.prisma',
+  migrations: {
+    path: 'prisma/migrations',
+  },
   datasource: {
-    url: "file:./dev.db",  // SQLite için direkt dosya yolu
+    url: env('DATABASE_URL'),
   },
 });

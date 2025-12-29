@@ -7,25 +7,30 @@ datasource db {
 }
 
 model Vehicle {
-  id           String   @id @default(uuid())
+  id           String    @id @default(cuid()) // uuid() yerine cuid() kullanalım (SQLite uyumlu)
   type         VehicleType
   brand        String
   model        String
   year         Int
   price        Float?
-  mileage      Int?     // km
+  mileage      Int?      // km
   fuelType     String?
   transmission String?
   color        String?
-  images       String   @default("")  // Tek string olarak tutacağız, URL'leri virgülle ayır (örneğin "url1,url2,url3")
-  featured     Boolean  @default(false)
-  slug         String   @unique
-  description  String?  // @db.Text'i SİL, SQLite'ta gerek yok
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  isFeatured  Boolean @default(false)
-}
+  images       String?   @default("") // virgülle ayrılmış URL'ler, boş olabilir
+  isFeatured   Boolean   @default(false) // sadece bir tane tuttuk
+  slug         String    @unique
+  description  String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
 
+  // YENİ ALANLAR
+  ownerName    String?
+  city         String?
+  ownerPhone   String?
+
+  @@map("vehicles")
+}
 
 enum VehicleType {
   CAR

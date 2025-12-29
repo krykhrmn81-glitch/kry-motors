@@ -9,7 +9,7 @@ export interface Vehicle {
   fuelType?: string | null;
   transmission?: string | null;
   color?: string | null;
-  images: string;                 // <-- STRING, DİZİ DEĞİL
+  images: string | null;                
   slug: string;
   description?: string | null;
   createdAt: Date;

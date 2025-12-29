@@ -26,22 +26,22 @@ export default function Navbar() {
         {/* DESKTOP MENU */}
         <nav className="hidden md:flex items-center space-x-12 text-sm font-medium">
           <Link 
-            href="/" 
-            className={`hover:text-yellow-400 transition ${pathname === '/' ? 'text-yellow-400 border-b-2 border-yellow-400 pb-1' : ''}`}
-          >
-            Ana Sayfa
-          </Link>
-          <Link 
             href="/cars" 
-            className={`hover:text-yellow-400 transition ${pathname.startsWith('/arabalar') ? 'text-yellow-400 border-b-2 border-yellow-400 pb-1' : ''}`}
+            className={`hover:text-yellow-400 transition ${pathname.startsWith('/cars') ? 'text-yellow-400 border-b-2 border-yellow-400 pb-1' : ''}`}
           >
             Arabalar
           </Link>
           <Link 
             href="/motorcycles" 
-            className={`hover:text-yellow-400 transition ${pathname.startsWith('/motosikletler') ? 'text-yellow-400 border-b-2 border-yellow-400 pb-1' : ''}`}
+            className={`hover:text-yellow-400 transition ${pathname.startsWith('/motorcycles') ? 'text-yellow-400 border-b-2 border-yellow-400 pb-1' : ''}`}
           >
             Motosikletler
+          </Link>
+          <Link 
+            href="/contact" 
+            className={`hover:text-yellow-400 transition ${pathname.startsWith('/contact') ? 'text-yellow-400 border-b-2 border-yellow-400 pb-1' : ''}`}
+          >
+            İletişim
           </Link>
 
           {isAdminLoggedIn && !isAdminPage && (
@@ -75,13 +75,6 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="md:hidden bg-black border-t border-gray-800 p-6 space-y-4 text-lg">
           <Link 
-            href="/" 
-            className="block hover:text-yellow-400"
-            onClick={() => setMobileOpen(false)}
-          >
-            Ana Sayfa
-          </Link>
-          <Link 
             href="/cars" 
             className="block hover:text-yellow-400"
             onClick={() => setMobileOpen(false)}
@@ -94,6 +87,13 @@ export default function Navbar() {
             onClick={() => setMobileOpen(false)}
           >
             Motosikletler
+          </Link>
+          <Link 
+            href="/contact" 
+            className="block hover:text-yellow-400"
+            onClick={() => setMobileOpen(false)}
+          >
+            İletişim
           </Link>
 
           {isAdminLoggedIn && !isAdminPage && (

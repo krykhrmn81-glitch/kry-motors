@@ -7,15 +7,17 @@ export default function Footer() {
           Kaliteli, güvenilir ve uygun fiyatlı ikinci el araçlar. Size en uygun aracı bulmanız için buradayız.
         </p>
 
-        <div className="flex justify-center space-x-8 mb-8">
+        <div className="flex justify-center space-x-4 mb-8">
           <a href="tel:+905408119071" className="hover:text-yellow-400 transition">
-            <span className="whitespace-nowrap">📞0540 811 9071</span>
+            📞
+            <span className="whitespace-nowrap">0540 811 9071</span>
           </a>
           <a href="https://wa.me/905408119071" target="_blank" className="hover:text-green-400 transition">
             💬 WhatsApp
           </a>
-          <a href="mailto:info@krymotors.com" className="hover:text-yellow-400 transition">
-            ✉️ E-Mail
+          <a href="mailto:krykhrmn8@gmail.com" className="hover:text-yellow-400 transition">
+            ✉ 
+            <span className="whitespace-nowrap"> E-Mail</span>
           </a>
         </div>
 

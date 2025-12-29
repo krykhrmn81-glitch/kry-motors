@@ -51,7 +51,6 @@ export default function RootLayout({
       <body className={`${inter.className} bg-gray-50 text-gray-900`}>
         <Navbar />
         <main className="min-h-screen">{children}
-          <GoogleAnalytics gaId="G-XXXXXXXXXX" /> {/* GA4 ID'ni buraya gir */}
         </main>
         <Footer />
       </body>
